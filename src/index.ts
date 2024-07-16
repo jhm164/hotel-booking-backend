@@ -9,7 +9,8 @@ import hotelSchema from "./Hotels/hotelSchema";
 import hotelResolvers from "./Hotels/hotelResolvers";
 import reviewSchema from './Reviews/graphReviewSchema'
 import reviewResolver from './Reviews/graphReviewResolver'
-
+import bookingSchema from './Bookings/graphBookingSchema'
+import bookingResolver from './Bookings/graphBookingResolver'
 
 async function startServer() {
 // connect mongodb
@@ -17,8 +18,8 @@ async function startServer() {
 
 
   const server = new ApolloServer({
-    typeDefs: [graphUserSchema,hotelSchema,reviewSchema],
-    resolvers: [ userReducer,hotelResolvers,reviewResolver ],
+    typeDefs: [graphUserSchema,hotelSchema,reviewSchema,bookingSchema],
+    resolvers: [ userReducer,hotelResolvers,reviewResolver,bookingResolver ],
   });
 
   const { url } = await startStandaloneServer(server, {
