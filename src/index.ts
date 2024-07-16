@@ -5,6 +5,11 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import { connectDB } from './config/database';
 import graphUserSchema from "./Users/graphSchema";
 import userReducer from "./Users/graphUserResolver";
+import hotelSchema from "./Hotels/hotelSchema";
+import hotelResolvers from "./Hotels/hotelResolvers";
+import reviewSchema from './Reviews/graphReviewSchema'
+import reviewResolver from './Reviews/graphReviewResolver'
+
 
 async function startServer() {
 // connect mongodb
@@ -12,8 +17,8 @@ async function startServer() {
 
 
   const server = new ApolloServer({
-    typeDefs: [graphUserSchema],
-    resolvers: [ userReducer ],
+    typeDefs: [graphUserSchema,hotelSchema,reviewSchema],
+    resolvers: [ userReducer,hotelResolvers,reviewResolver ],
   });
 
   const { url } = await startStandaloneServer(server, {
