@@ -15,7 +15,34 @@ const graphUserSchema = `#graphql
   }
 
   type Query {
-    getUsers: [User]!
+    getUser(id:String): User!
+    
+  }
+
+  type Mutation {
+    createUser(
+    name: String,
+    email: EmailAddress,
+    password:String,
+    phone: PhoneNumber,
+    address: String   ,         
+    date_of_birth:DOB
+  ):String
+  
+  updateUser(
+    id: String,
+    name: String,
+    email: EmailAddress,
+    password:String,
+    phone: PhoneNumber,
+    address: String   ,         
+    date_of_birth:DOB
+  ):String
+
+  deleteUser(
+    id: String
+  ):String
+
   }
 `;
 
